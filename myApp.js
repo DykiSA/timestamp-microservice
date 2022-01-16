@@ -11,7 +11,7 @@ const myApp = function(app) {
     let result;
     if (typeof input === 'undefined' || input === '') {
       // no input provided, use current time instead
-      result = moment.now();
+      result = moment();
     } else if (!isNaN(input)) {
       // given input is a timestamp
       result = moment(parseInt(input));
@@ -31,7 +31,7 @@ const myApp = function(app) {
       });
     } else {
       res.json({
-        unix: result.format('x'),
+        unix: parseInt(result.format('x')),
         utc: result.format('ddd, DD MMM YYYY HH:mm:ss') + ' GMT'
       });
     }
