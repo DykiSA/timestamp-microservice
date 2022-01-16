@@ -4,6 +4,7 @@
 // init project
 var express = require('express');
 var app = express();
+var myApp = require('./myApp');
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC 
@@ -18,13 +19,12 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-
 // your first API endpoint... 
 app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-
+myApp(app);
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
